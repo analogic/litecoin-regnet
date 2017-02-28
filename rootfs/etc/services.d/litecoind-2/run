@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo "* Litecoind node 2..."
+exec /usr/bin/litecoind \
+    --printtoconsole \
+    -datadir=/data/node-2 \
+    -conf=/etc/conf/node-2/litecoin.conf \
+    -server

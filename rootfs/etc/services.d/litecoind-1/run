@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "* Litecoind node 1..."
+exec /usr/bin/litecoind \
+    --printtoconsole \
+    -datadir=/data/node-1 \
+    -conf=/etc/conf/node-1/litecoin.conf \
+    -server \
+    -walletnotify='/usr/bin/litecoin-cli -conf=/etc/conf/node-1/litecoin.conf gettransaction %s | tr "\n" " " | sed "s/$/\n/"  > /var/run/litecoind/events-in' \
+    -blocknotify='echo %s > /var/run/litecoind/events-in'

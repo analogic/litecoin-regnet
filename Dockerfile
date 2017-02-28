@@ -6,14 +6,21 @@ RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
 ENTRYPOINT ["/init"]
 
 RUN apt-get update && \
-    apt-get install -y software-properties-common && \
-    add-apt-repository ppa:bitcoin/bitcoin && \
-    apt-get update && \
-    apt-get install -y bitcoind nmap
+    apt-get install -y build-essential libssl-dev libboost-all-dev git libdb-dev libdb++-dev libevent-dev libminiupnpc-dev curl autoconf libtool bsdmainutils pkg-config nmap && \
+    mkdir /tmp/litecoind && \
+    curl -sL https://github.com/litecoin-project/litecoin/archive/v0.13.2.1.tar.gz | tar zx -C /tmp/litecoind --strip-components=1 && \
+    cd /tmp/litecoind && \
+    ./autogen.sh && \
+    ./configure --with-incompatible-bdb && \
+    make -j4 && \
+    cp /tmp/litecoind/src/litecoind /usr/bin/litecoind && \
+    cp /tmp/litecoind/src/litecoin-cli /usr/bin/litecoin-cli && \
+    rm -rf /tmp/litecoind && \
+#    apt-get remove -y build-essential libssl-dev libboost-all-dev git libdb5.1-dev libdb5.1++-dev libevent-dev libminiupnpc-dev curl autoconf libtool bsdmainutils pkg-config && \
+#    apt-get autoremove -y && \
+    mkdir /var/run/litecoind
 
-RUN mkdir /var/run/bitcoind
-
-EXPOSE 18332 18335
+EXPOSE 19332 19335
 
 VOLUME ["/data"]
 ADD rootfs /
