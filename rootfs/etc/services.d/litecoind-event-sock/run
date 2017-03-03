@@ -2,4 +2,4 @@
 
 mkfifo /var/run/litecoind/events-in
 exec 8<>/var/run/litecoind/events-in
-exec ncat -l -k --send-only 0.0.0.0 18335 < /var/run/litecoind/events-in
+exec ncat -l -k --send-only 0.0.0.0 19335 < /var/run/litecoind/events-in

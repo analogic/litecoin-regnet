@@ -16,8 +16,6 @@ RUN apt-get update && \
     cp /tmp/litecoind/src/litecoind /usr/bin/litecoind && \
     cp /tmp/litecoind/src/litecoin-cli /usr/bin/litecoin-cli && \
     rm -rf /tmp/litecoind && \
-#    apt-get remove -y build-essential libssl-dev libboost-all-dev git libdb5.1-dev libdb5.1++-dev libevent-dev libminiupnpc-dev curl autoconf libtool bsdmainutils pkg-config && \
-#    apt-get autoremove -y && \
     mkdir /var/run/litecoind
 
 EXPOSE 19332 19335
