@@ -3,4 +3,4 @@
 echo "* generating block..."
 
 litecoin-cli -conf=/etc/conf/node-1/litecoin.conf generate 1
-sleep 60
+sleep 10
