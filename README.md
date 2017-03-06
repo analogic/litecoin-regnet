@@ -9,7 +9,7 @@ Docker container with 2 Litecoin nodes connected to each other made specialy for
 
 **How to use container?**
 
-1. **docker run --name regnet analogic/litecoin-regnet** [-p 18332:18332] [-p 18334:18334] [-v /data:/data]
+1. **docker run --name regnet analogic/litecoin-regnet** [-p 19332:19332] [-p 19334:19334] [-v /data:/data]
 2. ...wait couple seconds...
 3. develop! (or profit!)
 
@@ -22,7 +22,7 @@ Node 1
 
     ```docker exec <container> litecoin-cli listaccounts```
     
-    ```docker exec <container> litecoin-cli sendfrom myaccount mveAy8hqEomzEFqBBq7gUCow5gMRgCosYt 3.14```
+    ```docker exec <container> litecoin-cli sendfrom shop mveAy8hqEomzEFqBBq7gUCow5gMRgCosYt 3.14```
 
 Node 2
 ------
@@ -32,7 +32,7 @@ Node 2
 
     ```docker exec <container> litecoin-cli -conf=/etc/conf/node-2/litecoin.conf listaccounts```
     
-    ```docker exec <container> litecoin-cli sendfrom myaccount mveAy8hqEomzEFqBBq7gUCow5gMRgCosYt 3.14```
+    ```docker exec <container> litecoin-cli -conf=/etc/conf/node-2/litecoin.conf sendfrom customer mveAy8hqEomzEFqBBq7gUCow5gMRgCosYt 3.14```
     
 Event sock
 ----------
